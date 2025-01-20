@@ -11,7 +11,6 @@ const Footer = () => {
             Discover the best colleges, courses, and opportunities. Your future starts here.
           </p>
         </div>
-
         {/* Navigation Links */}
         <div>
           <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
