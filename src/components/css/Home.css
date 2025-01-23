@@ -1,0 +1,81 @@
+/* Container to hold both filter and list sections */
+.container {
+    display: flex;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Left side - Filter section */
+  .filters {
+    width: 250px;
+    padding: 20px;
+    border-right: 2px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .filters h3 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .checkbox {
+    margin-bottom: 15px;
+  }
+  
+  .checkbox label {
+    font-size: 1.1em;
+    color: #555;
+  }
+  
+  .checkbox input {
+    margin-right: 10px;
+  }
+  
+  /* Right side - College list */
+  .college-list {
+    flex: 1;
+    padding: 20px;
+    background-color: #fafafa;
+  }
+  
+  .college-list h3 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .college-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .college-list li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1em;
+    color: #444;
+  }
+  
+  .college-list li:hover {
+    background-color: #e9f5fb;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .filters {
+      width: 100%;
+      border-right: none;
+    }
+  
+    .college-list {
+      width: 100%;
+    }
+  }
+  
