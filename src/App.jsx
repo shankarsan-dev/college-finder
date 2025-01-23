@@ -8,7 +8,7 @@ import './index.css';
 const App = () => {
   return (
    <>
-   
+   <p>gg</p>
    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>
