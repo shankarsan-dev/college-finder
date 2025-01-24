@@ -1,9 +1,10 @@
 import React from "react";
-import "./Footer.css";
+import "./css/Footer.css";
 
 const Footer = () => {
   return (
     <footer className="footer">
+
       <div className="logo">
         <h3>Logo</h3>
       </div>
@@ -34,6 +35,7 @@ const Footer = () => {
         <p>News</p>
         <p>Blogs</p>
       </div>
+      
     </footer>
   );
 };
