@@ -72,9 +72,11 @@
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
-  height: 200px; /* Reduced card height */
+  height: auto; /* Let content decide height */
   display: flex;
   flex-direction: column;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .college-card:hover {
@@ -87,24 +89,40 @@
   object-fit: cover;
 }
 
-.college-title {
-  padding: 10px;
-  font-size: 1.1em;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
+.college-details {
+  flex-grow: 1; /* Allow details to take up remaining space */
+  padding: 10px 0;
+  font-size: 0.85em; /* Make text smaller */
 }
 
+.college-details h4 {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.college-details p {
+  font-size: 0.85em; /* Smaller font size for text */
+  color: #555;
+  margin: 5px 0;
+}
+
+.college-details p strong {
+  color: #333;
+}
+
+/* Button Styling */
 .toggle-details {
   background-color: #007bff;
   color: white;
   border: none;
   padding: 5px 10px;
-  margin: 10px auto;
+  margin-top: 10px;
   border-radius: 4px;
   cursor: pointer;
-  display: block;
   text-align: center;
+  display: block;
+  width: 100%;
 }
 
 .toggle-details:hover {
@@ -113,23 +131,9 @@
 
 /* Collapsible details */
 .college-details {
-  display: none; /* Hidden by default */
+  display: block; /* Ensure it's shown by default */
   padding: 10px;
   background-color: #f9f9f9;
-}
-
-.college-details.visible {
-  display: block; /* Show when toggled */
-}
-
-.college-details p {
-  font-size: 0.9em;
-  color: #555;
-  margin: 5px 0;
-}
-
-.college-details p strong {
-  color: #333;
 }
 
 /* Mobile responsive styles */
@@ -162,4 +166,36 @@
   .college-image {
     height: 150px;
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  margin: 0 10px;
+}
+
+.college-list p {
+  text-align: center;
+  font-size: 1.2em;
+  color: #666;
 }
