@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Filter = ({ filters, onFilterChange }) => {
+const courseFilter = ({ filters, onFilterChange }) => {
   const handleCheckboxChange = (e) => {
     const { name, value, checked } = e.target;
 
@@ -54,4 +54,4 @@ const Filter = ({ filters, onFilterChange }) => {
   );
 };
 
-export default Filter;
+export default courseFilter;
