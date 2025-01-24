@@ -33,10 +33,10 @@ function Navbar() {
         </div>
 
         {/* Auth Buttons */}
-        <div className="auth-buttons">
+        {/* <div className="auth-buttons">
           <a href="#" className="sign-in">Sign In</a>
           <a href="#" className="sign-up">Sign Up</a>
-        </div>
+        </div> */}
 
         {/* Hamburger Menu */}
         <div className="hamburger-menu" onClick={toggleMobileMenu}>
@@ -63,10 +63,10 @@ function Navbar() {
             <li><a href="#">Option 2</a></li>
           </ul>
         </li>
-        <div className="login-signup-mobile">
+        {/* <div className="login-signup-mobile">
         <button>Signup</button> 
         <button>Login</button>
-        </div>
+        </div> */}
       
       </ul>
     </nav>
