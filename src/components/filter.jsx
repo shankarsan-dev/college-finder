@@ -3,11 +3,18 @@ import React from 'react';
 const Filter = ({ filters, onFilterChange }) => {
   const handleCheckboxChange = (e) => {
     const { name, value, checked, type } = e.target;
+    
     if (type === 'checkbox') {
-      if (name === 'location' || name === 'mainStream' || name === 'educationLevel') {
-        onFilterChange(name, value, checked);
-      } else {
-        onFilterChange(name, checked);
+      if (name === 'location') {
+        // For location, set the value to the selected option (single selection for dropdown)
+        onFilterChange(name, value);
+      } else if (name === 'educationLevel' || name === 'mainStream') {
+        // Allow multiple selections for education level or main stream
+        if (checked) {
+          onFilterChange(name, value, checked);
+        } else {
+          onFilterChange(name, value, checked);
+        }
       }
     }
   };
@@ -16,6 +23,7 @@ const Filter = ({ filters, onFilterChange }) => {
     <div className="filters">
       <h3>Filter Options</h3>
 
+      {/* Filter for Private Colleges */}
       <div className="checkbox">
         <label>
           <input
@@ -27,6 +35,8 @@ const Filter = ({ filters, onFilterChange }) => {
           Private Colleges
         </label>
       </div>
+
+      {/* Filter for Public Colleges */}
       <div className="checkbox">
         <label>
           <input
@@ -38,6 +48,8 @@ const Filter = ({ filters, onFilterChange }) => {
           Public Colleges
         </label>
       </div>
+
+      {/* Filter for Top Ranked Colleges */}
       <div className="checkbox">
         <label>
           <input
@@ -50,28 +62,24 @@ const Filter = ({ filters, onFilterChange }) => {
         </label>
       </div>
 
-      {/* Location Filter - Checkboxes */}
+      {/* Location Filter - Dropdown (Single Selection) */}
       <div className="checkbox-group">
         <h4>Location:</h4>
-        <div className="location-scroll">
-          {['New York', 'California', 'Texas', 'Florida', 'Nevada', 'Washington', 'Chicago', 'Ohio', 'Miami', 'Los Angeles'].map((loc) => (
-            <div key={loc} className="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  name="location"
-                  value={loc}
-                  checked={filters.location.includes(loc)}
-                  onChange={(e) => handleCheckboxChange(e)}
-                />
-                {loc}
-              </label>
-            </div>
+        <select
+          name="location"
+          value={filters.location}
+          onChange={(e) => onFilterChange('location', e.target.value)} // Only one location can be selected
+        >
+          <option value="">Select Location</option> {/* Default value */}
+          {['New York', 'California', 'Texas', 'Florida', 'Nevada', 'Washington', 'Ohio', 'Oregon'].map((loc) => (
+            <option key={loc} value={loc}>
+              {loc}
+            </option>
           ))}
-        </div>
+        </select>
       </div>
 
-      {/* Education Level Filter - Checkboxes */}
+      {/* Education Level Filter - Checkboxes (Multiple Selections) */}
       <div className="checkbox-group">
         <h4>Education Level:</h4>
         {['bachelor', '+2'].map((level) => (
@@ -90,25 +98,23 @@ const Filter = ({ filters, onFilterChange }) => {
         ))}
       </div>
 
-      {/* Main Stream Filter - Checkboxes */}
+      {/* Main Stream Filter - Checkboxes (Multiple Selections) */}
       <div className="checkbox-group">
         <h4>Main Stream:</h4>
-        <div className="main-stream-scroll">
-          {['Engineering', 'Arts', 'IT', 'Medicine', 'Law', 'Business', 'Design', 'Architecture', 'Science', 'Education'].map((stream) => (
-            <div key={stream} className="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  name="mainStream"
-                  value={stream}
-                  checked={filters.mainStream.includes(stream)}
-                  onChange={(e) => handleCheckboxChange(e)}
-                />
-                {stream}
-              </label>
-            </div>
-          ))}
-        </div>
+        {['Engineering', 'Arts', 'IT', 'Medicine', 'Law', 'Business', 'Design', 'Architecture', 'Science', 'Education'].map((stream) => (
+          <div key={stream} className="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="mainStream"
+                value={stream}
+                checked={filters.mainStream.includes(stream)}
+                onChange={(e) => handleCheckboxChange(e)}
+              />
+              {stream}
+            </label>
+          </div>
+        ))}
       </div>
     </div>
   );
