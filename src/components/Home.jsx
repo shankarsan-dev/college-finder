@@ -3,6 +3,7 @@ import './css/Home.css'; // Assuming you save the CSS in Home.css
 import Filter from './filter'; // Import the Filter component
 import trinityImage from '../assets/trinity.png'; // Adjust the path accordingly
 import Footer from './Footer';
+import Ads from './Ads'
 
 const Home = () => {
   const [filters, setFilters] = useState({
@@ -115,6 +116,7 @@ const Home = () => {
 
   return (
     <>
+    <Ads/>
       <div className="container">
         {/* Left side - Filter Options */}
         <Filter filters={filters} onFilterChange={handleFilterChange} />
@@ -144,7 +146,11 @@ const Home = () => {
           </div>
 
           {/* Pagination Controls */}
-          {filteredColleges.length > collegesPerPage && (
+         
+        </div>
+        
+      </div>
+      {filteredColleges.length > collegesPerPage && (
             <div className="pagination">
               <button onClick={handlePrevPage} disabled={currentPage === 1}>
                 Previous
@@ -157,8 +163,6 @@ const Home = () => {
               </button>
             </div>
           )}
-        </div>
-      </div>
       <Footer />
     </>
   );
