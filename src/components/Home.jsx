@@ -14,9 +14,11 @@ const Home = () => {
     mainStream: [],
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const collegesPerPage = 5;
+
   const handleFilterChange = (name, value, checked) => {
     if (name === 'location' || name === 'mainStream' || name === 'educationLevel') {
-      // Handle multi-selection (location, educationLevel, or mainStream)
       setFilters((prevFilters) => {
         const newValues = checked
           ? [...prevFilters[name], value]
@@ -29,6 +31,7 @@ const Home = () => {
         [name]: value,
       }));
     }
+    setCurrentPage(1); // Reset to the first page on filter change
   };
 
   const colleges = [
@@ -68,38 +71,24 @@ const Home = () => {
       image: trinityImage,
     },
     {
-      name: 'College A',
-      type: 'private',
-      affiliation: 'University X',
-      location: 'New York',
-      image: trinityImage,
-    },
-    {
-      name: 'College B',
+      name: 'College F',
       type: 'public',
-      affiliation: 'University Y',
-      location: 'California',
+      affiliation: 'University C',
+      location: 'Washington',
       image: trinityImage,
     },
     {
-      name: 'College C',
+      name: 'College G',
       type: 'private',
-      affiliation: 'University Z',
-      location: 'Texas',
+      affiliation: 'University D',
+      location: 'Ohio',
       image: trinityImage,
     },
     {
-      name: 'College D',
+      name: 'College H',
       type: 'public',
-      affiliation: 'University A',
-      location: 'Florida',
-      image: trinityImage,
-    },
-    {
-      name: 'College E',
-      type: 'private',
-      affiliation: 'University B',
-      location: 'Nevada',
+      affiliation: 'University E',
+      location: 'Oregon',
       image: trinityImage,
     },
   ];
@@ -112,31 +101,66 @@ const Home = () => {
     return true;
   });
 
-  return (
-   <>
-    <div className="container">
-      {/* Left side - Filter Options */}
-      <Filter filters={filters} onFilterChange={handleFilterChange} />
+  const totalPages = Math.ceil(filteredColleges.length / collegesPerPage);
+  const startIndex = (currentPage - 1) * collegesPerPage;
+  const currentColleges = filteredColleges.slice(startIndex, startIndex + collegesPerPage);
 
-      {/* Right side - College List */}
-      <div className="college-list">
-        <h3>College List</h3>
-        <div className="college-container">
-          {filteredColleges.map((college, index) => (
-            <div key={index} className="college-card">
-              <img src={college.image} alt={college.name} className="college-image" />
-              <div className="college-details">
-                <h4>{college.name}</h4>
-                <p><strong>Affiliation:</strong> {college.affiliation}</p>
-                <p><strong>Location:</strong> {college.location}</p>
-              </div>
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
+  return (
+    <>
+      <div className="container">
+        {/* Left side - Filter Options */}
+        <Filter filters={filters} onFilterChange={handleFilterChange} />
+
+        {/* Right side - College List */}
+        <div className="college-list">
+          <h3>College List</h3>
+          <div className="college-container">
+            {currentColleges.length > 0 ? (
+              currentColleges.map((college, index) => (
+                <div key={index} className="college-card">
+                  <img src={college.image} alt={college.name || "College Image"} className="college-image" />
+                  <div className="college-details">
+                    <h4>{college.name || "Unknown College"}</h4>
+                    <p>
+                      <strong>Affiliation:</strong> {college.affiliation || "Not Affiliated"}
+                    </p>
+                    <p>
+                      <strong>Location:</strong> {college.location || "Unknown Location"}
+                    </p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No colleges match the selected filters.</p>
+            )}
+          </div>
+
+          {/* Pagination Controls */}
+          {filteredColleges.length > collegesPerPage && (
+            <div className="pagination">
+              <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                Previous
+              </button>
+              <span>
+                Page {currentPage} of {totalPages}
+              </span>
+              <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+                Next
+              </button>
             </div>
-          ))}
+          )}
         </div>
       </div>
-    </div>
-    <Footer/>
-   </>
+      <Footer />
+    </>
   );
 };
 
