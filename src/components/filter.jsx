@@ -3,18 +3,20 @@ import React from 'react';
 const Filter = ({ filters, onFilterChange }) => {
   const handleCheckboxChange = (e) => {
     const { name, value, checked, type } = e.target;
-    
+
     if (type === 'checkbox') {
-      if (name === 'location') {
-        // For location, set the value to the selected option (single selection for dropdown)
-        onFilterChange(name, value);
-      } else if (name === 'educationLevel' || name === 'mainStream') {
-        // Allow multiple selections for education level or main stream
+      // Handle the checkboxes for education level or main stream
+      if (name === 'educationLevel' || name === 'mainStream') {
         if (checked) {
-          onFilterChange(name, value, checked);
+          // Add the value if checked
+          onFilterChange(name, value, true);
         } else {
-          onFilterChange(name, value, checked);
+          // Remove the value if unchecked
+          onFilterChange(name, value, false);
         }
+      } else {
+        // Handle the other checkboxes (private, public, topRanked)
+        onFilterChange(name, checked);
       }
     }
   };

@@ -40,20 +40,21 @@ const Home = () => {
   };
 
   const colleges = [
-    { name: 'College A', type: 'private', affiliation: 'University X', location: 'New York', image: trinityImage },
-    { name: 'College B', type: 'public', affiliation: 'University Y', location: 'California', image: trinityImage },
-    { name: 'College C', type: 'private', affiliation: 'University Z', location: 'Texas', image: trinityImage },
-    { name: 'College D', type: 'public', affiliation: 'University A', location: 'Florida', image: trinityImage },
-    { name: 'College E', type: 'private', affiliation: 'University B', location: 'Nevada', image: trinityImage },
-    { name: 'College F', type: 'public', affiliation: 'University C', location: 'Washington', image: trinityImage },
-    { name: 'College G', type: 'private', affiliation: 'University D', location: 'Ohio', image: trinityImage },
-    { name: 'College H', type: 'public', affiliation: 'University E', location: 'Oregon', image: trinityImage },
-    { name: 'College A', type: 'private', affiliation: 'University X', location: 'New York', image: trinityImage },
-    { name: 'College B', type: 'public', affiliation: 'University Y', location: 'California', image: trinityImage },
-    { name: 'College C', type: 'private', affiliation: 'University Z', location: 'Texas', image: trinityImage },
-    { name: 'College D', type: 'public', affiliation: 'University A', location: 'Florida', image: trinityImage },
-    { name: 'College E', type: 'private', affiliation: 'University B', location: 'Nevada', image: trinityImage },
+    { name: 'College A', type: 'private', affiliation: 'University X', location: 'New York', mainStream: ['Engineering', 'IT'], image: trinityImage },
+    { name: 'College B', type: 'public', affiliation: 'University Y', location: 'California', mainStream: ['Arts', 'Design'], image: trinityImage },
+    { name: 'College C', type: 'private', affiliation: 'University Z', location: 'Texas', mainStream: ['Medicine', 'Law'], image: trinityImage },
+    { name: 'College D', type: 'public', affiliation: 'University A', location: 'Florida', mainStream: ['Business', 'Science'], image: trinityImage },
+    { name: 'College E', type: 'private', affiliation: 'University B', location: 'Nevada', mainStream: ['Engineering', 'Architecture'], image: trinityImage },
+    { name: 'College F', type: 'public', affiliation: 'University C', location: 'Washington', mainStream: ['Law', 'Arts'], image: trinityImage },
+    { name: 'College G', type: 'private', affiliation: 'University D', location: 'Ohio', mainStream: ['Education', 'Design'], image: trinityImage },
+    { name: 'College H', type: 'public', affiliation: 'University E', location: 'Oregon', mainStream: ['IT', 'Business'], image: trinityImage },
+    { name: 'College A', type: 'private', affiliation: 'University X', location: 'New York', mainStream: ['Engineering', 'IT'], image: trinityImage },
+    { name: 'College B', type: 'public', affiliation: 'University Y', location: 'California', mainStream: ['Arts', 'Design'], image: trinityImage },
+    { name: 'College C', type: 'private', affiliation: 'University Z', location: 'Texas', mainStream: ['Medicine', 'Law'], image: trinityImage },
+    { name: 'College D', type: 'public', affiliation: 'University A', location: 'Florida', mainStream: ['Business', 'Science'], image: trinityImage },
+    { name: 'College E', type: 'private', affiliation: 'University B', location: 'Nevada', mainStream: ['Engineering', 'Architecture'], image: trinityImage },
   ];
+  
 
   const filteredColleges = colleges.filter((college) => {
     if (filters.private && college.type !== 'private') return false;
