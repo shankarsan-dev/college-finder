@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import trinityImage from '../assets/trinity.png'; // Adjust the path accordingly
+import Ads from './Ads';
 import './css/Home.css'; // Assuming you save the CSS in Home.css
 import Filter from './filter'; // Import the Filter component
-import trinityImage from '../assets/trinity.png'; // Adjust the path accordingly
 import Footer from './Footer';
-import Ads from './Ads';
 
 const Home = () => {
   const [filters, setFilters] = useState({
