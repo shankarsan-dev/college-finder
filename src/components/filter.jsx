@@ -53,6 +53,7 @@ const Filter = ({ filters, onFilterChange }) => {
 
         <h3>Filter Options</h3>
 
+        {/* Checkbox for Private Colleges */}
         <div className="checkbox">
           <label>
             <input
@@ -65,6 +66,7 @@ const Filter = ({ filters, onFilterChange }) => {
           </label>
         </div>
 
+        {/* Checkbox for Public Colleges */}
         <div className="checkbox">
           <label>
             <input
@@ -77,6 +79,7 @@ const Filter = ({ filters, onFilterChange }) => {
           </label>
         </div>
 
+        {/* Checkbox for Top Ranked Colleges */}
         <div className="checkbox">
           <label>
             <input
@@ -89,6 +92,7 @@ const Filter = ({ filters, onFilterChange }) => {
           </label>
         </div>
 
+        {/* Dropdown for Location */}
         <div className="checkbox-group">
           <h4>Location:</h4>
           <select
@@ -96,8 +100,16 @@ const Filter = ({ filters, onFilterChange }) => {
             value={filters.location}
             onChange={(e) => onFilterChange('location', e.target.value)}
           >
-            <option value="">Select Location</option>
-            {['New York', 'California', 'Texas', 'Florida', 'Nevada', 'Washington', 'Ohio', 'Oregon'].map((loc) => (
+            <option value="">All Locations</option>
+            {[
+              'Kathmandu',
+              'Lalitpur',
+              'Pokhara',
+              'Biratnagar',
+              'Chitwan',
+              'Bhaktapur',
+              'Nepalgunj',
+            ].map((loc) => (
               <option key={loc} value={loc}>
                 {loc}
               </option>
@@ -105,6 +117,7 @@ const Filter = ({ filters, onFilterChange }) => {
           </select>
         </div>
 
+        {/* Education Level Filters */}
         <div className="checkbox-group">
           <h4>Education Level:</h4>
           {['Bachelor', '+2'].map((level) => (
@@ -123,9 +136,21 @@ const Filter = ({ filters, onFilterChange }) => {
           ))}
         </div>
 
+        {/* Main Stream Filters */}
         <div className="checkbox-group">
           <h4>Main Stream:</h4>
-          {['Engineering', 'Arts', 'IT', 'Medicine', 'Law', 'Business', 'Design', 'Architecture', 'Science', 'Education'].map((stream) => (
+          {[
+            'Engineering',
+            'Arts',
+            'IT',
+            'Medicine',
+            'Law',
+            'Business',
+            'Design',
+            'Architecture',
+            'Science',
+            'Education',
+          ].map((stream) => (
             <div key={stream} className="checkbox">
               <label>
                 <input
