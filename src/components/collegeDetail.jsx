@@ -1,8 +1,11 @@
 import React from 'react';
 import './css/CollegeDetail.css';
+import Footer from './Footer';
 
 const CollegeDetail = () => {
   return (
+
+    <>
     <div className="college-detail-container">
       {/* Photo Section with One Image and Logo */}
       <div className="photo-header-container">
@@ -91,7 +94,7 @@ const CollegeDetail = () => {
           {[...Array(10)].map((_, index) => (
             <div className="gallery-item" key={index}>
               <img
-                src={`https://via.placeholder.com/300x200?text=Image+${index + 1}`}
+                src={`src\assets\collegebg.png`}
                 alt={`Gallery Image ${index + 1}`}
                 className="gallery-image"
               />
@@ -99,7 +102,18 @@ const CollegeDetail = () => {
           ))}
         </div>
       </div>
+
+      {/* About Us Section - Moved below Gallery */}
+      <div className="about-us-section">
+        <h3>About Us</h3>
+        <p>
+          Welcome to [College Name], an institution committed to providing a high-quality education. Founded in [Year], we have a long history of academic excellence and have continually adapted to meet the changing demands of modern education. Our dedicated faculty and state-of-the-art facilities ensure that students receive the best possible learning experience. Whether you're interested in pursuing a degree in the arts, sciences, business, or technology, [College Name] is the place to help you achieve your goals.
+        </p>
+      </div>
     </div>
+    <Footer/>
+    </>
+    
   );
 };
 

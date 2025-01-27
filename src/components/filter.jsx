@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 const Filter = ({ filters, onFilterChange }) => {
   const [isFiltersVisible, setFiltersVisible] = useState(false);
 
-  // Update visibility based on window width
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 769) {
@@ -13,13 +12,9 @@ const Filter = ({ filters, onFilterChange }) => {
       }
     };
 
-    // Initialize on component mount
     handleResize();
-
-    // Add event listener for window resize
     window.addEventListener('resize', handleResize);
 
-    // Clean up the event listener
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -47,14 +42,11 @@ const Filter = ({ filters, onFilterChange }) => {
 
   return (
     <div className="filters-wrapper">
-      {/* Toggle Filters Button (Hamburger/Show Filters Button) */}
       <button className="toggle-filters-button" onClick={toggleFilters}>
         {isFiltersVisible ? 'Hide Filters' : 'Show Filters'}
       </button>
 
-      {/* Filter Section */}
       <div className={`filters ${isFiltersVisible ? 'visible' : 'hidden'}`}>
-        {/* Close Filters Button */}
         <button className="close-filters-button" onClick={toggleFilters}>
           ✖
         </button>
@@ -115,7 +107,7 @@ const Filter = ({ filters, onFilterChange }) => {
 
         <div className="checkbox-group">
           <h4>Education Level:</h4>
-          {['bachelor', '+2'].map((level) => (
+          {['Bachelor', '+2'].map((level) => (
             <div key={level} className="checkbox">
               <label>
                 <input
@@ -125,7 +117,7 @@ const Filter = ({ filters, onFilterChange }) => {
                   checked={filters.educationLevel.includes(level)}
                   onChange={(e) => handleCheckboxChange(e)}
                 />
-                {level === 'bachelor' ? "Bachelor's" : '+2'}
+                {level === 'Bachelor' ? "Bachelor's" : '+2'}
               </label>
             </div>
           ))}
@@ -133,18 +125,7 @@ const Filter = ({ filters, onFilterChange }) => {
 
         <div className="checkbox-group">
           <h4>Main Stream:</h4>
-          {[ 
-            'Engineering',
-            'Arts',
-            'IT',
-            'Medicine',
-            'Law',
-            'Business',
-            'Design',
-            'Architecture',
-            'Science',
-            'Education',
-          ].map((stream) => (
+          {['Engineering', 'Arts', 'IT', 'Medicine', 'Law', 'Business', 'Design', 'Architecture', 'Science', 'Education'].map((stream) => (
             <div key={stream} className="checkbox">
               <label>
                 <input

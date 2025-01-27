@@ -48,8 +48,8 @@ function Navbar() {
 
       {/* Navigation Links */}
       <ul className={`nav-links ${isMobileMenuOpen ? 'mobile-active' : ''}`}>
-        <li><a href="#">Course</a></li>
-        <li><a href="#">College</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/course">Course</a></li>
         <li><a href="#">Degree</a></li>
         <li><a href="#">Exams</a></li>
         <li><a href="#">Schools</a></li>

@@ -1,104 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const FilterCourse = ({ filters, onFilterChange }) => {
-  const [isFiltersVisible, setFiltersVisible] = useState(false);
-
-  // Update visibility based on window width
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 769) {
-        setFiltersVisible(true); // Always show filters on desktop
-      } else {
-        setFiltersVisible(false); // Hide filters on mobile
-      }
-    };
-
-    // Initialize on component mount
-    handleResize();
-
-    // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
-
-    // Clean up the event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
+const CourseFilter = ({ filters, onFilterChange, filterVisible }) => {
   const handleCheckboxChange = (e) => {
-    const { name, value, checked, type } = e.target;
-
-    if (type === 'checkbox') {
-      if (name === 'category' || name === 'educationLevel') {
-        if (checked) {
-          onFilterChange(name, value, true);
-        } else {
-          onFilterChange(name, value, false);
-        }
-      } else {
-        onFilterChange(name, checked);
-      }
-    }
-  };
-
-  const toggleFilters = () => {
-    setFiltersVisible(!isFiltersVisible);
+    const { name, value, checked } = e.target;
+    onFilterChange(name, value, checked);
   };
 
   return (
-    <div className="filters-wrapper">
-      {/* Toggle Filters Button (Hamburger/Show Filters Button) */}
-      <button className="toggle-filters-button" onClick={toggleFilters}>
-        {isFiltersVisible ? 'Hide Filters' : 'Show Filters'}
-      </button>
+    <div className={`course-filters ${filterVisible ? 'show' : 'hide'}`}>
+      <h3>Filter Courses</h3>
 
-      {/* Filter Section */}
-      <div className={`filters ${isFiltersVisible ? 'visible' : 'hidden'}`}>
-        {/* Close Filters Button */}
-        <button className="close-filters-button" onClick={toggleFilters}>
-          ✖
-        </button>
+      <div className="checkbox-group">
+        <h4>Main Stream:</h4>
+        {['Engineering', 'IT', 'Arts', 'Medicine', 'Law', 'Business', 'Architecture'].map((stream) => (
+          <div key={stream} className="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="mainStream"
+                value={stream}
+                checked={filters.mainStream.includes(stream)}
+                onChange={(e) => handleCheckboxChange(e)}
+              />
+              {stream}
+            </label>
+          </div>
+        ))}
+      </div>
 
-        <h3>Filter Options</h3>
-
-        <div className="checkbox-group">
-          <h4>Categories:</h4>
-          {['Engineering', 'Business', 'IT', 'Design', 'Arts', 'Science', 'Medicine', 'Law', 'Education'].map((category) => (
-            <div key={category} className="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  name="category"
-                  value={category}
-                  checked={filters.category.includes(category)}
-                  onChange={(e) => handleCheckboxChange(e)}
-                />
-                {category}
-              </label>
-            </div>
-          ))}
-        </div>
-
-        <div className="checkbox-group">
-          <h4>Educational Level:</h4>
-          {['+2', 'bachelor'].map((level) => (
-            <div key={level} className="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  name="educationLevel"
-                  value={level}
-                  checked={filters.educationLevel.includes(level)}
-                  onChange={(e) => handleCheckboxChange(e)}
-                />
-                {level}
-              </label>
-            </div>
-          ))}
-        </div>
+      <div className="checkbox-group">
+        <h4>Education Level:</h4>
+        {['bachelor', '+2'].map((level) => (
+          <div key={level} className="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="educationLevel"
+                value={level}
+                checked={filters.educationLevel.includes(level)}
+                onChange={(e) => handleCheckboxChange(e)}
+              />
+              {level === 'bachelor' ? "Bachelor's" : '+2'}
+            </label>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default FilterCourse;
+export default CourseFilter;
