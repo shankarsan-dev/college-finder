@@ -1,13 +1,11 @@
 /* General Container to hold both filter and list sections */
-
 .container {
   display: flex;
   width: 100%; /* Full width of the screen */
-  height: 75%;
+  height: 100vh; /* Full viewport height */
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
 }
 
 /* Left side - Filter section */
@@ -17,13 +15,10 @@
   padding: 20px;
   border-right: 2px solid #ccc;
   background-color: #f9f9f9;
-  overflow-y: auto;
-  max-height: 100vh;
   position: sticky;
   top: 0;
   box-sizing: border-box;
   transition: none; /* No transitions needed for desktop view */
-  transform: none; /* Ensure it's visible on desktop */
 }
 
 .filters h3 {
@@ -78,18 +73,12 @@
   color: #007bff;
 }
 
-/* Hidden Filters - Mobile Only */
-.filters.hidden {
-  transform: translateX(-100%); /* Slide off-screen */
-}
-
 /* Right side - College list */
 .college-list {
-  flex: 1;
+  flex: 1; /* Take up the remaining space */
   padding: 20px;
   background-color: #fafafa;
   box-sizing: border-box;
-  max-height: 90vh; /* Set a max-height so content can scroll */
 }
 
 .college-list h3 {
@@ -184,8 +173,7 @@
 /* Mobile responsive styles */
 @media screen and (max-width: 768px) {
   .container {
-    flex-direction: column;
-    height: 215%;
+    flex-direction: column; /* Stack elements on mobile */
   }
 
   .filters {
@@ -258,6 +246,7 @@
   }
 }
 
+/* Pagination Styling */
 .pagination {
   display: flex;
   justify-content: center;
@@ -284,6 +273,7 @@
   margin: 0 10px;
 }
 
+/* Message when no colleges are found */
 .college-list p {
   text-align: center;
   font-size: 1.2em;
