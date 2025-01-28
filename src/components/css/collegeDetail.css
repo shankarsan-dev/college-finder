@@ -58,7 +58,12 @@
   border: 2px solid #fff;
   animation: zoomIn 1s forwards; /* Zoom-in animation */
 }
-
+@media screen and (max-width: 768px) {
+  .college-logo {
+    width: 80px;
+    padding: 5px;
+  }
+}
 /* Animation for logo zoom-in */
 @keyframes zoomIn {
   from {

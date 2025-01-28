@@ -145,22 +145,7 @@ const CollegeDetail = () => {
           </div>
         </div>
 
-        {/* Gallery Section */}
-        <div className="gallery-section">
-          <h3>Gallery</h3>
-          <div className="gallery-grid">
-            {college.gallery_images.map((image, index) => (
-              <div className="gallery-item" key={index}>
-                <img
-                  src={image}
-                  alt={`Gallery Image ${index + 1}`}
-                  className="gallery-image"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
+      
         {/* About Us Section - Moved below Gallery */}
         <div className="about-us-section">
           <h3>About Us</h3>

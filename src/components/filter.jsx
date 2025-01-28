@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Filter = ({ filters, onFilterChange }) => {
+const Filter = ({ filters, onFilterChange, availableCities }) => {
   const [isFiltersVisible, setFiltersVisible] = useState(false);
 
   useEffect(() => {
@@ -8,7 +8,7 @@ const Filter = ({ filters, onFilterChange }) => {
       if (window.innerWidth >= 769) {
         setFiltersVisible(true); // Always show filters on desktop
       } else {
-        setFiltersVisible(false); // Hide filters on mobile
+        setFiltersVisible(false); // Hide filters on mobile by default
       }
     };
 
@@ -101,17 +101,9 @@ const Filter = ({ filters, onFilterChange }) => {
             onChange={(e) => onFilterChange('location', e.target.value)}
           >
             <option value="">All Locations</option>
-            {[
-              'Kathmandu',
-              'Lalitpur',
-              'Pokhara',
-              'Biratnagar',
-              'Chitwan',
-              'Bhaktapur',
-              'Nepalgunj',
-            ].map((loc) => (
-              <option key={loc} value={loc}>
-                {loc}
+            {availableCities.map((city) => (
+              <option key={city} value={city}>
+                {city}
               </option>
             ))}
           </select>

@@ -171,6 +171,7 @@
   margin-bottom: 10px;
   font-weight: bold;
   line-height: 1.4;
+  text-align: center;
 }
 
 .college-details p {
@@ -208,6 +209,7 @@
   padding: 10px;
   background-color: #f9f9f9;
   border-radius: 4px;
+
 }
 
 /* Mobile responsive styles */
@@ -266,9 +268,9 @@
     padding: 15px;
   }
 
-  .college-details h4 {
+  /* .college-details h4 {
     font-size: 1em;
-  }
+  } */
 
   .college-details p {
     font-size: 0.8em;
