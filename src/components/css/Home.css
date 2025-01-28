@@ -18,7 +18,44 @@
   position: sticky;
   top: 0;
   box-sizing: border-box;
-  transition: none; /* No transitions needed for desktop view */
+  transition: opacity 0.5s ease; /* Fade transition */
+  opacity: 0; /* Initially hidden */
+  animation: slideInFromLeft 0.5s ease-out forwards; /* Slide-in from left on page load */
+}
+
+/* Filter items fade-in animation */
+.filters .checkbox {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards; /* Fade-in animation applied to filter checkboxes */
+}
+
+.filters .checkbox:nth-child(1) {
+  animation-delay: 0.2s; /* Delay each element's appearance */
+}
+.filters .checkbox:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.filters .checkbox:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Add fade-in animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide-in from left animation */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .filters h3 {
@@ -99,7 +136,7 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
   height: auto; /* Let content decide height */
   display: flex;
   flex-direction: column;
@@ -107,10 +144,13 @@
   box-sizing: border-box;
 }
 
+/* Hover effect on college card */
 .college-card:hover {
-  transform: translateY(-5px);
+  transform: scale(1.05); /* Slightly increase the size of the card */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
 }
 
+/* Image inside the college card */
 .college-image {
   width: 100%;
   height: 120px; /* Adjusted image height */
@@ -185,11 +225,14 @@
     background-color: #f9f9f9;
     border-right: 2px solid #ccc;
     max-width: 250px;
-    transform: translateX(-100%); /* Hidden by default */
+    transform: translateX(-100%); /* Initially off-screen */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* Fade transition */
   }
 
   .filters.visible {
-    transform: translateX(0); /* Show when visible */
+    transform: translateX(0); /* Slide in */
+    opacity: 1; /* Fade in */
   }
 
   .toggle-filters-button {
@@ -238,6 +281,7 @@
     display: block; /* Explicitly show filter on desktop */
     position: sticky; /* Stick the filter while scrolling */
     transform: none; /* Reset any mobile-specific transforms */
+    opacity: 1; /* Ensure the filter is fully visible */
   }
 
   .toggle-filters-button,
