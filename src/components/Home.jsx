@@ -464,7 +464,7 @@ const Home = () => {
   useEffect(() => {
     const fetchColleges = async () => {
       try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts'); // Replace with your API endpoint
+        const response = await fetch('http://localhost:8000/api/colleges/ '); // Replace with your API endpoint
         const data = await response.json();
         console.log('API Response:', data); // Log the response to inspect
         if (data && Array.isArray(data)) {
