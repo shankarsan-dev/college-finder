@@ -171,7 +171,7 @@
   margin-bottom: 10px;
   font-weight: bold;
   line-height: 1.4;
-  text-align: center;
+  text-align:center
 }
 
 .college-details p {
@@ -179,6 +179,7 @@
   color: #555;
   margin: 5px 0;
   line-height: 1.6; /* More line height for better readability */
+  align-items: center;
 }
 
 .college-details p strong {
@@ -270,7 +271,8 @@
 
   /* .college-details h4 {
     font-size: 1em;
-  } */
+  }
+   */
 
   .college-details p {
     font-size: 0.8em;
