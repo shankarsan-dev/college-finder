@@ -30,7 +30,7 @@ const CourseFilter = ({ filters, onFilterChange, filterVisible }) => {
 
       <div className="checkbox-group">
         <h4>Education Level:</h4>
-        {['bachelor', '+2'].map((level) => (
+        {['National Examinations Board', 'Cambridge GCE A Levels'].map((level) => (
           <div key={level} className="checkbox">
             <label>
               <input
@@ -40,7 +40,25 @@ const CourseFilter = ({ filters, onFilterChange, filterVisible }) => {
                 checked={filters.educationLevel.includes(level)}
                 onChange={(e) => handleCheckboxChange(e)}
               />
-              {level === 'bachelor' ? "Bachelor's" : '+2'}
+              {level}
+            </label>
+          </div>
+        ))}
+      </div>
+
+      <div className="checkbox-group">
+        <h4>Duration:</h4>
+        {['1 year', '2 years', '3 years', '4 years'].map((duration) => (
+          <div key={duration} className="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="duration"
+                value={duration}
+                checked={filters.duration?.includes(duration)}
+                onChange={(e) => handleCheckboxChange(e)}
+              />
+              {duration}
             </label>
           </div>
         ))}
