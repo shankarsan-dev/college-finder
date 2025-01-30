@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import CollegeDetail from './components/collegeDetail';
 import Courses from './components/course';
 import Degree from './components/degree';
+import News from './components/news';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/collegeDetail/:id" element={<CollegeDetail/>}/>
         <Route path="/course" element={<Courses/>}/>
         <Route path="/degree" element={<Degree/>}/>
+        <Route path="/news" element={<News/>}/>
       </Routes>
     </BrowserRouter>
    </>
