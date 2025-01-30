@@ -12,7 +12,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="top-container">
         {/* Logo */}
-        <div className="logo">CollegesHubNepal</div>
+          <div className="logo">CollegesHubNepal</div>
 
         {/* Search Bar */}
         <div className="search-bar">
