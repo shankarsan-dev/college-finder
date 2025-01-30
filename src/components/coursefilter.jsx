@@ -68,3 +68,4 @@ const CourseFilter = ({ filters, onFilterChange, filterVisible }) => {
 };
 
 export default CourseFilter;
+  
