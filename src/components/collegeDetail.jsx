@@ -1,31 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
 import './css/CollegeDetail.css';
 import Footer from './Footer';
 
 const CollegeDetail = () => {
-  const { id } = useParams(); // Get the `id` from the URL
+  const { id } = useParams(); // Get the id from the URL
   const [college, setCollege] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
     // Fetch data from the server
     const fetchCollegeData = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/colleges/${id}`); 
-      
-        // const response = await fetch(`https://jsonplaceholder.typicode.com/posts`); // Example endpoint
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
         if (!response.ok) {
           throw new Error('Failed to fetch college data');
         }
         const data = await response.json();
-
-        // Assuming the fetched data is a single college entry
-        const collegeData = data[0]; // Adjust based on your actual data structure
-        console.log(data);
         
-        setCollege(data);
+        setCollege({
+          "address": "Surya Bikram Gyawali Marg, Old Baneshwor, Kathmandu",
+          "college_id": 1,
+          "college_name": "Thames International College",
+          "college_logo": "https://media.edusanjal.com/_sized_/logos/thames-college-thumbnail-200x200.png",
+          "cover_image": "https://media.edusanjal.com/_sized_/cover_photo/thames-cover-thumbnail-1400x280-70.jpg",
+          "detailed_info": "Thames International College, located in Baneshwor, is a leading academic institution offering a variety of undergraduate programs...",
+          "offered_program": "Bachelor of Business Administration (BBA) - 64 Seats, Bachelor of Information Management (BIM) - 64 Seats, Bachelor of Arts in Social Work (BASW) - 32 Seats",
+          "additional_details": "Tribhuvan University, Private Institution, 01-5971224, info@thamescollege.edu.np",
+          "map_url": "https://www.google.com/maps/?q=27.701667450376043,85.34187196479105"
+        });
       } catch (err) {
         setError(err.message);
       } finally {
@@ -34,7 +39,7 @@ const CollegeDetail = () => {
     };
 
     fetchCollegeData();
-  }, [id]); // Dependency array ensures this runs when `id` changes
+  }, [id]); // Dependency array ensures this runs when id changes
 
   if (loading) {
     return <p>Loading...</p>;
@@ -85,7 +90,7 @@ const CollegeDetail = () => {
             <p>{college.detailed_info}</p>
 
             <h3>Offered Programs</h3>
-            <ul>
+            <ul className="program-list">
               {college.offered_program.split(',').map((program, index) => (
                 <li key={index}>{program}</li>
               ))}
@@ -97,7 +102,7 @@ const CollegeDetail = () => {
             <p>{college.detailed_info}</p>
 
             <h3>Offered Programs</h3>
-            <ul>
+            <ul className="program-list">
               {college.offered_program.split(',').map((program, index) => (
                 <li key={index}>{program}</li>
               ))}
@@ -120,27 +125,24 @@ const CollegeDetail = () => {
             {/* Map Section */}
             <div className="college-map">
               <h3>Location on Map</h3>
-              <iframe
-                src={college.map_url}
+              <img
+                src="https://via.placeholder.com/800x300.png?text=Demo+Map" // Replace this with your map image URL
+                alt="Demo Map"
                 width="100%"
                 height="300"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-              ></iframe>
+                onClick={() => window.location.href=college.map_url} // Navigate to map URL on click
+              />
             </div>
           </div>
         </div>
 
-        {/* About Us Section - Moved below Gallery */}
+        {/* About Us Section */}
         <div className="about-us-section">
           <h3>About Us</h3>
-          <p>{college.about_us}</p>
+          <p>{college.detailed_info}</p>
         </div>
       </div>
 
-      <h1>{}</h1>
- 
       <Footer />
     </>
   );
