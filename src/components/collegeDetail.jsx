@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
-<<<<<<< Updated upstream
-import { useParams, useNavigate } from 'react-router-dom';
-=======
 import { useNavigate, useParams } from 'react-router-dom'; // Import useNavigate
->>>>>>> Stashed changes
 import './css/CollegeDetail.css';
 import Footer from './Footer';
 
@@ -22,20 +18,6 @@ const CollegeDetail = () => {
           throw new Error('Failed to fetch college data');
         }
         const data = await response.json();
-<<<<<<< Updated upstream
-
-        setCollege({
-          "address": "Surya Bikram Gyawali Marg, Old Baneshwor, Kathmandu",
-          "college_id": 1,
-          "college_name": "Thames International College",
-          "college_logo": "https://media.edusanjal.com/_sized_/logos/thames-college-thumbnail-200x200.png",
-          "cover_image": "https://media.edusanjal.com/_sized_/cover_photo/thames-cover-thumbnail-1400x280-70.jpg",
-          "detailed_info": "Thames International College, located in Baneshwor, is a leading academic institution offering a variety of undergraduate programs...",
-          "offered_program": "Bachelor of Business Administration (BBA) - 64 Seats, Bachelor of Information Management (BIM) - 64 Seats, Bachelor of Arts in Social Work (BASW) - 32 Seats",
-          "additional_details": "Tribhuvan University, Private Institution, 01-5971224, info@thamescollege.edu.np",
-          "map_url": "https://www.google.com/maps/?q=27.701667450376043,85.34187196479105"
-        });
-=======
         
         setCollege(data
           //{
@@ -50,7 +32,6 @@ const CollegeDetail = () => {
         //   "map_url": "https://www.google.com/maps/?q=27.701667450376043,85.34187196479105"
         // }
         );
->>>>>>> Stashed changes
       } catch (err) {
         setError(err.message);
       } finally {
