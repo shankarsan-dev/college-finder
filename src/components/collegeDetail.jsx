@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useParams, useNavigate } from 'react-router-dom';
 import './css/CollegeDetail.css';
 import Footer from './Footer';
 
 const CollegeDetail = () => {
-  const { id } = useParams(); // Get the id from the URL
+  const { id } = useParams();
   const [college, setCollege] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch data from the server
     const fetchCollegeData = async () => {
       try {
         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -19,7 +18,7 @@ const CollegeDetail = () => {
           throw new Error('Failed to fetch college data');
         }
         const data = await response.json();
-        
+
         setCollege({
           "address": "Surya Bikram Gyawali Marg, Old Baneshwor, Kathmandu",
           "college_id": 1,
@@ -39,7 +38,7 @@ const CollegeDetail = () => {
     };
 
     fetchCollegeData();
-  }, [id]); // Dependency array ensures this runs when id changes
+  }, [id]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -53,7 +52,6 @@ const CollegeDetail = () => {
     return <p>No college found.</p>;
   }
 
-  // Extract information from additional_details string
   const [affiliation, institutionType, contact, email] = college.additional_details.split(',');
 
   return (
@@ -86,15 +84,12 @@ const CollegeDetail = () => {
         {/* Rest of the layout */}
         <div className="college-info">
           <div className="left-column">
-            <h3>Introduction</h3>
-            <p>{college.detailed_info}</p>
-
-            <h3>Offered Programs</h3>
-            <ul className="program-list">
-              {college.offered_program.split(',').map((program, index) => (
-                <li key={index}>{program}</li>
-              ))}
-            </ul>
+            <h3>Advertisement</h3>
+            {/* Placeholder for ads, replace with actual ad content */}
+            <div className="ad-placeholder">
+              <p>Advertisement here</p>
+              {/* You could embed an ad iframe here */}
+            </div>
           </div>
 
           <div className="center-column">
@@ -110,28 +105,32 @@ const CollegeDetail = () => {
           </div>
 
           <div className="right-column">
-            <h3>Affiliation</h3>
-            <p>{affiliation}</p>
+            <div className="top-section">
+              <h3>Affiliation</h3>
+              <p>{affiliation}</p>
 
-            <h3>Private or Public Institution</h3>
-            <p>{institutionType}</p>
+              <h3>Private or Public Institution</h3>
+              <p>{institutionType}</p>
+            </div>
 
-            <h3>Contact</h3>
-            <p>{contact}</p>
+            <div className="bottom-section">
+              <h3>Contact</h3>
+              <p>{contact}</p>
 
-            <h3>Email</h3>
-            <p>{email}</p>
+              <h3>Email</h3>
+              <p>{email}</p>
 
-            {/* Map Section */}
-            <div className="college-map">
-              <h3>Location on Map</h3>
-              <img
-                src="https://via.placeholder.com/800x300.png?text=Demo+Map" // Replace this with your map image URL
-                alt="Demo Map"
-                width="100%"
-                height="300"
-                onClick={() => window.location.href=college.map_url} // Navigate to map URL on click
-              />
+              {/* Map Section */}
+              <div className="college-map">
+                <h3>Location on Map</h3>
+                <img
+                  src="https://via.placeholder.com/800x300.png?text=Demo+Map" // Replace with your map image URL
+                  alt="Demo Map"
+                  width="100%"
+                  height="300"
+                  onClick={() => window.location.href = college.map_url} // Navigate to map URL on click
+                />
+              </div>
             </div>
           </div>
         </div>
