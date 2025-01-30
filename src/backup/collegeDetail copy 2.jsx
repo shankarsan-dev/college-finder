@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
-<<<<<<< Updated upstream
-import { useParams, useNavigate } from 'react-router-dom';
-=======
 import { useNavigate, useParams } from 'react-router-dom'; // Import useNavigate
->>>>>>> Stashed changes
 import './css/CollegeDetail.css';
 import Footer from './Footer';
 
 const CollegeDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Get the id from the URL
   const [college, setCollege] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
+    // Fetch data from the server
     const fetchCollegeData = async () => {
       try {
         const response = await fetch(`http://localhost:8000/api/colleges/${id}`);
@@ -22,20 +19,6 @@ const CollegeDetail = () => {
           throw new Error('Failed to fetch college data');
         }
         const data = await response.json();
-<<<<<<< Updated upstream
-
-        setCollege({
-          "address": "Surya Bikram Gyawali Marg, Old Baneshwor, Kathmandu",
-          "college_id": 1,
-          "college_name": "Thames International College",
-          "college_logo": "https://media.edusanjal.com/_sized_/logos/thames-college-thumbnail-200x200.png",
-          "cover_image": "https://media.edusanjal.com/_sized_/cover_photo/thames-cover-thumbnail-1400x280-70.jpg",
-          "detailed_info": "Thames International College, located in Baneshwor, is a leading academic institution offering a variety of undergraduate programs...",
-          "offered_program": "Bachelor of Business Administration (BBA) - 64 Seats, Bachelor of Information Management (BIM) - 64 Seats, Bachelor of Arts in Social Work (BASW) - 32 Seats",
-          "additional_details": "Tribhuvan University, Private Institution, 01-5971224, info@thamescollege.edu.np",
-          "map_url": "https://www.google.com/maps/?q=27.701667450376043,85.34187196479105"
-        });
-=======
         
         setCollege(data
           //{
@@ -50,7 +33,6 @@ const CollegeDetail = () => {
         //   "map_url": "https://www.google.com/maps/?q=27.701667450376043,85.34187196479105"
         // }
         );
->>>>>>> Stashed changes
       } catch (err) {
         setError(err.message);
       } finally {
@@ -59,7 +41,7 @@ const CollegeDetail = () => {
     };
 
     fetchCollegeData();
-  }, [id]);
+  }, [id]); // Dependency array ensures this runs when id changes
 
   if (loading) {
     return <p>Loading...</p>;
@@ -73,6 +55,7 @@ const CollegeDetail = () => {
     return <p>No college found.</p>;
   }
 
+  // Extract information from additional_details string
   const [affiliation, institutionType, contact, email] = college.additional_details.split(',');
 
   return (
@@ -105,12 +88,15 @@ const CollegeDetail = () => {
         {/* Rest of the layout */}
         <div className="college-info">
           <div className="left-column">
-            <h3>Advertisement</h3>
-            {/* Placeholder for ads, replace with actual ad content */}
-            <div className="ad-placeholder">
-              <p>Advertisement here</p>
-              {/* You could embed an ad iframe here */}
-            </div>
+            <h3>Introduction</h3>
+            <p>{college.detailed_info}</p>
+
+            <h3>Offered Programs</h3>
+            <ul className="program-list">
+              {college.offered_program.split(',').map((program, index) => (
+                <li key={index}>{program}</li>
+              ))}
+            </ul>
           </div>
 
           <div className="center-column">
@@ -126,32 +112,28 @@ const CollegeDetail = () => {
           </div>
 
           <div className="right-column">
-            <div className="top-section">
-              <h3>Affiliation</h3>
-              <p>{affiliation}</p>
+            <h3>Affiliation</h3>
+            <p>{affiliation}</p>
 
-              <h3>Private or Public Institution</h3>
-              <p>{institutionType}</p>
-            </div>
+            <h3>Private or Public Institution</h3>
+            <p>{institutionType}</p>
 
-            <div className="bottom-section">
-              <h3>Contact</h3>
-              <p>{contact}</p>
+            <h3>Contact</h3>
+            <p>{contact}</p>
 
-              <h3>Email</h3>
-              <p>{email}</p>
+            <h3>Email</h3>
+            <p>{email}</p>
 
-              {/* Map Section */}
-              <div className="college-map">
-                <h3>Location on Map</h3>
-                <img
-                  src="https://via.placeholder.com/800x300.png?text=Demo+Map" // Replace with your map image URL
-                  alt="Demo Map"
-                  width="100%"
-                  height="300"
-                  onClick={() => window.location.href = college.map_url} // Navigate to map URL on click
-                />
-              </div>
+            {/* Map Section */}
+            <div className="college-map">
+              <h3>Location on Map</h3>
+              <img
+                src="https://via.placeholder.com/800x300.png?text=Demo+Map" // Replace this with your map image URL
+                alt="Demo Map"
+                width="100%"
+                height="300"
+                onClick={() => window.location.href=college.map_url} // Navigate to map URL on click
+              />
             </div>
           </div>
         </div>
