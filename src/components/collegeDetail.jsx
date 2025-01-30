@@ -13,35 +13,18 @@ const CollegeDetail = () => {
     // Fetch data from the server
     const fetchCollegeData = async () => {
       try {
-        // const response = await fetch(`https://example.com/api/colleges/${id}`); 
-        // // Replace with your API endpoint
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts`)
+        const response = await fetch(`https://example.com/api/colleges/${id}`); 
+      
+        // const response = await fetch(`https://jsonplaceholder.typicode.com/posts`); // Example endpoint
         if (!response.ok) {
           throw new Error('Failed to fetch college data');
         }
         const data = await response.json();
-        setCollege({
-          "id": 1,
-          "college_name": "Thames International College",
-          "address": "Surya Bikram Gyawali Marg, Old Baneshwor, Kathmandu",
-          "image_src": "https://media.edusanjal.com/__sized__/cover_photo/thames-cover-thumbnail-1400x280-70.jpg",
-          "logo_src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi9Gso2xaPC5vbsfREg5AxHwVGWwkii6eFtA&s",
-          "introduction": "Brief introduction about the college.",
-          "description": "Detailed description of the college, its history, and values.",
-          "programs": ["Program 1", "Program 2", "Program 3"],
-          "affiliation": "Tribhuvan University",
-          "institution_type": "Private",
-          "contact_number": "123-456-7890",
-          "email": "info@thamescollege.edu.np",
-          "map_embed_url": "https://www.google.com/maps/embed?pb=...",
-          "gallery_images": [
-            "https://example.com/gallery1.jpg",
-            "https://example.com/gallery2.jpg",
-            "https://example.com/gallery3.jpg"
-          ],
-          "about_us": "Welcome to Thames International College..."
-        }
-        ); // Update the state with the fetched data
+
+        // Assuming the fetched data is a single college entry
+        const collegeData = data[0]; // Adjust based on your actual data structure
+        
+        setCollege(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -64,6 +47,9 @@ const CollegeDetail = () => {
     return <p>No college found.</p>;
   }
 
+  // Extract information from additional_details string
+  const [affiliation, institutionType, contact, email] = college.additional_details.split(',');
+
   return (
     <>
       <div className="college-detail-container">
@@ -71,13 +57,13 @@ const CollegeDetail = () => {
         <div className="photo-header-container">
           <div className="photo-container">
             <img
-              src={college.image_src}
+              src={college.cover_image}
               alt={`${college.college_name} Banner`}
               className="college-photo"
             />
             {/* College Logo */}
             <img
-              src={college.logo_src}
+              src={college.college_logo}
               alt={`${college.college_name} Logo`}
               className="college-logo"
             />
@@ -95,11 +81,11 @@ const CollegeDetail = () => {
         <div className="college-info">
           <div className="left-column">
             <h3>Introduction</h3>
-            <p>{college.introduction}</p>
+            <p>{college.detailed_info}</p>
 
             <h3>Offered Programs</h3>
             <ul>
-              {college.programs.map((program, index) => (
+              {college.offered_program.split(',').map((program, index) => (
                 <li key={index}>{program}</li>
               ))}
             </ul>
@@ -107,11 +93,11 @@ const CollegeDetail = () => {
 
           <div className="center-column">
             <h3>College Description</h3>
-            <p>{college.description}</p>
+            <p>{college.detailed_info}</p>
 
             <h3>Offered Programs</h3>
             <ul>
-              {college.programs.map((program, index) => (
+              {college.offered_program.split(',').map((program, index) => (
                 <li key={index}>{program}</li>
               ))}
             </ul>
@@ -119,22 +105,22 @@ const CollegeDetail = () => {
 
           <div className="right-column">
             <h3>Affiliation</h3>
-            <p>{college.affiliation}</p>
+            <p>{affiliation}</p>
 
             <h3>Private or Public Institution</h3>
-            <p>{college.institution_type}</p>
+            <p>{institutionType}</p>
 
             <h3>Contact</h3>
-            <p>{college.contact_number}</p>
+            <p>{contact}</p>
 
             <h3>Email</h3>
-            <p>{college.email}</p>
+            <p>{email}</p>
 
             {/* Map Section */}
             <div className="college-map">
               <h3>Location on Map</h3>
               <iframe
-                src={college.map_embed_url}
+                src={college.map_url}
                 width="100%"
                 height="300"
                 style={{ border: 0 }}
@@ -145,13 +131,15 @@ const CollegeDetail = () => {
           </div>
         </div>
 
-      
         {/* About Us Section - Moved below Gallery */}
         <div className="about-us-section">
           <h3>About Us</h3>
           <p>{college.about_us}</p>
         </div>
       </div>
+
+      <h1>{}</h1>
+ 
       <Footer />
     </>
   );
