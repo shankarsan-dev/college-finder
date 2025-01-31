@@ -66,6 +66,25 @@
     width: 100px;
     padding: 8px;
   }
+
+  /* Adjusting photo and logo position for smaller screens */
+  .college-header {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .college-info-side h1 {
+    font-size: 2em;
+  }
+
+  .college-info-side p {
+    font-size: 1.2em;
+  }
+
+  .college-photo {
+    height: 200px;
+    object-fit: cover;
+  }
 }
 
 /* Animation for logo zoom-in */
@@ -175,7 +194,7 @@
 .right-column {
   display: flex;
   flex-direction: column;
-  gap: 30px; /* This creates the space between the sections */
+  gap: 30px;
 }
 
 .top-section,
@@ -251,4 +270,48 @@
   line-height: 1.6;
   max-width: 800px;
   margin: 0 auto;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .college-info {
+    flex-direction: column;
+  }
+
+  .left-column, .center-column, .right-column {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+
+  .college-photo {
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .college-logo {
+    bottom: -50px;
+    left: 15px;
+    width: 120px;
+  }
+
+  .college-info-side h1 {
+    font-size: 2.5rem;
+  }
+
+  .college-info-side p {
+    font-size: 1.2rem;
+  }
+
+  .college-header {
+    text-align: center;
+  }
+
+  .college-map img {
+    height: 200px;
+  }
+
+  .about-us-section {
+    padding: 20px;
+  }
 }

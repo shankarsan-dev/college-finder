@@ -12,7 +12,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="top-container">
         {/* Logo */}
-          <div className="logo">CollegesHubNepal</div>
+        <div className="logo">College Discover</div>
 
         {/* Search Bar */}
         <div className="search-bar">
@@ -50,19 +50,8 @@ function Navbar() {
       <ul className={`nav-links ${isMobileMenuOpen ? 'mobile-active' : ''}`}>
         <li><a href="/">Home</a></li>
         <li><a href="/course">Course</a></li>
-        {/* <li><a href="#">Degree</a></li>
-        <li><a href="#">Exams</a></li>
-        <li><a href="#">Schools</a></li> */}
-        <li><a href="#">Admission</a></li>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Blogs</a></li>
-        {/* <li className="dropdown">
-          <a href="#">More &#x25BC;</a>
-          <ul className="dropdown-menu">
-            <li><a href="#">Option 1</a></li>
-            <li><a href="#">Option 2</a></li>
-          </ul>
-        </li> */}
+        <li><a href="/news">News</a></li>
+        <li><a href="/blogs">Blogs</a></li>
         {/* <div className="login-signup-mobile">
         <button>Signup</button> 
         <button>Login</button>
