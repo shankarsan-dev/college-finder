@@ -74,11 +74,11 @@
   }
 
   .college-info-side h1 {
-    font-size: 2em;
+    font-size: 1.8rem;  /* Smaller font size */
   }
 
   .college-info-side p {
-    font-size: 1.2em;
+    font-size: 1rem;  /* Smaller font size */
   }
 
   .college-photo {
@@ -102,12 +102,14 @@
 /* College Name and Address */
 .college-header {
   margin-top: 30px;
+  text-align: center; /* Center the header section */
 }
 
 .college-info-side {
   display: inline-block;
   vertical-align: top;
   margin-left: 160px;
+  text-align: left; /* Default alignment */
 }
 
 .college-info-side h1 {
@@ -116,12 +118,33 @@
   margin-bottom: 15px;
   text-transform: uppercase;
   font-weight: bold;
+  text-align: left; /* Default alignment */
 }
 
 .college-info-side p {
   font-size: 1.4em;
   color: #7f8c8d;
   line-height: 1.6;
+  text-align: left; /* Default alignment */
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .college-info-side {
+    margin-left: 0; /* Remove the left margin */
+    text-align: center; /* Center align text on mobile */
+  }
+
+  .college-info-side h1 {
+    font-size: 1.8rem;  /* Smaller font size */
+    text-align: center;  /* Center the text */
+    margin: 0 0 10px;  /* Remove any large margin around the title */
+  }
+
+  .college-info-side p {
+    font-size: 1rem;  /* Smaller font size */
+    text-align: center; /* Center the address text as well */
+  }
 }
 
 /* Three-column Layout */
@@ -174,12 +197,6 @@
   margin-bottom: 20px;
   font-weight: bold;
   text-align: center;
-}
-
-.left-column ul,
-.center-column ul {
-  list-style-type: disc;
-  margin-left: 30px;
 }
 
 .left-column p,
@@ -296,11 +313,11 @@
   }
 
   .college-info-side h1 {
-    font-size: 2.5rem;
+    font-size: 1.8rem; /* Smaller font size */
   }
 
   .college-info-side p {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Smaller font size */
   }
 
   .college-header {
@@ -314,4 +331,49 @@
   .about-us-section {
     padding: 20px;
   }
+}
+
+/* Info Item Styling */
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 15px; /* Adjust font size */
+}
+
+.info-item .icon {
+  font-size: 30px; /* Make the icon bigger */
+  margin-right: 10px;
+}
+
+.right-column .top-section,
+.right-column .bottom-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Program List */
+.program-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add space between the items */
+
+  padding-left: 0; /* Remove padding to get rid of bullet points */
+}
+
+.program-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #d6d3d3; /* Background color for each item */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 1.1em;
+  color: #555;
+}
+
+.program-item div {
+  flex: 1;
+  font-size: 1em;
+  color: #333;
 }
