@@ -337,6 +337,7 @@
 // export default Home;
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import trinityImage from '../assets/trinity.png';
 import Ads from './Ads';
@@ -500,7 +501,7 @@ const Home = () => {
         </div>
       </div>
 
-      {filteredColleges.length > collegesPerPage && (
+      {/* {filteredColleges.length > collegesPerPage && (
         <div className="pagination">
           <button onClick={handlePrevPage} disabled={currentPage === 1}>
             Previous
@@ -512,7 +513,38 @@ const Home = () => {
             Next
           </button>
         </div>
-      )}
+      )} */}
+
+{/* {filteredColleges.length > collegesPerPage && (
+  <div className="pagination">
+    <button onClick={handlePrevPage} disabled={currentPage === 1}>
+      ◀
+    </button>
+    <span>
+      Page {currentPage} of {totalPages}
+    </span>
+    <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+      ▶
+    </button>
+  </div>
+)} */}
+
+
+{filteredColleges.length > collegesPerPage && (
+  <div className="pagination">
+    <button onClick={handlePrevPage} disabled={currentPage === 1}>
+      <FaArrowLeft />
+    </button>
+    <span>
+      Page {currentPage} of {totalPages}
+    </span>
+    <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+      <FaArrowRight />
+    </button>
+  </div>
+)}
+
+
 
       <Footer />
     </>

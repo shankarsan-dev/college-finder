@@ -12,33 +12,39 @@
   }
 
    */
-
    .footer {
     background-color: #f4f4f4;
     padding: 20px 40px;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Ensures wrapping for smaller screens */
-    align-items: flex-start;
-    animation: fadeIn 1s ease-in-out; /* Fade-in animation for the footer */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;
+    animation: fadeIn 1s ease-in-out;
   }
   
-  .footer > div {
-    flex: 1 1 200px; /* Makes all sections flexible with a minimum width */
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .footer-content > div {
+    flex: 1 1 200px;
     margin: 10px;
-    opacity: 0; /* Initial state for animation */
-    transform: translateY(20px); /* Initial position for animation */
-    animation: slideUp 0.8s ease-in-out forwards; /* Slide-up animation */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.8s ease-in-out forwards;
   }
   
   .footer h3, .footer h4 {
     margin-bottom: 15px;
     color: #333;
-    transition: color 0.3s ease; /* Smooth color transition on hover */
+    transition: color 0.3s ease;
   }
   
   .footer h3:hover, .footer h4:hover {
-    color: #007BFF; /* Highlight color for hover */
+    color: #007BFF;
   }
   
   .information-links a {
@@ -46,22 +52,22 @@
     margin-bottom: 10px;
     color: black;
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+    transition: color 0.3s ease, transform 0.3s ease;
   }
   
   .information-links a:hover {
     color: #007BFF;
-    transform: translateX(5px); /* Slight movement on hover */
+    transform: translateX(5px);
   }
   
   .contact p, .quick-links p {
     margin-bottom: 10px;
     color: #333;
-    transition: color 0.3s ease; /* Smooth transition on hover */
+    transition: color 0.3s ease;
   }
   
   .contact p:hover, .quick-links p:hover {
-    color: #007BFF; /* Highlight text color */
+    color: #007BFF;
     cursor: pointer;
   }
   
@@ -86,30 +92,38 @@
     }
   }
   
-  /* Media Queries for Responsiveness */
+  /* Copyright Section - Ensuring it stays at the bottom */
+  .copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    opacity: 0.7;
+  }
+  
+  /* Responsive Design */
   @media (max-width: 768px) {
-    .footer {
-      flex-direction: column; /* Stack sections vertically */
-      align-items: center; /* Center align sections */
-      text-align: center; /* Center text for smaller screens */
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
   
-    .footer > div {
-      flex: 1 1 100%; /* Each section takes full width */
-      margin: 10px 0; /* Add vertical spacing between sections */
+    .footer-content > div {
+      flex: 1 1 100%;
+      margin: 10px 0;
     }
-  
-  
   }
   
   @media (max-width: 480px) {
     .footer {
-      padding: 15px; /* Reduce padding for extra small screens */
+      padding: 15px;
     }
   
     .footer h3, .footer h4 {
-      font-size: 18px; /* Smaller font size for headings */
+      font-size: 18px;
     }
-
   }
   
