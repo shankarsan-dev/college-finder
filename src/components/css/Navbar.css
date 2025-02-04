@@ -118,7 +118,7 @@ body {
 
 /* Suggestions Dropdown for Mobile */
 .search-results1 {
-  position:fixed  ;
+  position: fixed;
   top: 140px; /* Positioned just below the mobile search input */
   left: 0;
   width: 100%;

@@ -1,6 +1,7 @@
 // App.js
 import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CollegesList from './components/CollegesList';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Blog from './components/blog';
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/degree" element={<Degree/>}/>
         <Route path="/news" element={<News/>}/>
         <Route path="/blogs" element={<Blog/>}/>
+        <Route path="/colleges/:courseName/:board" element={<CollegesList />} />
       </Routes>
     </BrowserRouter>
    </>

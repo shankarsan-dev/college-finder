@@ -171,7 +171,6 @@ body, html {
   background-color: #ddd;
   cursor: not-allowed;
 }
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .courses-container {

@@ -501,35 +501,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* {filteredColleges.length > collegesPerPage && (
-        <div className="pagination">
-          <button onClick={handlePrevPage} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-            Next
-          </button>
-        </div>
-      )} */}
-
-{/* {filteredColleges.length > collegesPerPage && (
-  <div className="pagination">
-    <button onClick={handlePrevPage} disabled={currentPage === 1}>
-      ◀
-    </button>
-    <span>
-      Page {currentPage} of {totalPages}
-    </span>
-    <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-      ▶
-    </button>
-  </div>
-)} */}
-
-
 {filteredColleges.length > collegesPerPage && (
   <div className="pagination">
     <button onClick={handlePrevPage} disabled={currentPage === 1}>
