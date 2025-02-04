@@ -185,3 +185,20 @@ body, html {
     border-bottom: 2px solid #ccc;
   }
 }
+
+/* Add these styles to your existing Course.css file */
+.view-colleges-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.view-colleges-btn:hover {
+  background-color: #0056b3;
+}
