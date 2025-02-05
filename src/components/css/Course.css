@@ -46,6 +46,8 @@ body, html {
 @media (max-width: 768px) {
   .filter-toggle-button {
     display: block; /* Show the toggle button on mobile */
+    text-align: center;
+    margin: 36px auto;
   }
 
   .course-filters {

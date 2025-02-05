@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -22,7 +21,7 @@ const CollegesList = () => {
     const fetchColleges = async () => {
       setLoading(true);  // Set loading to true before fetch
       try {
-        const response = await fetch(`http://localhost:8000/api/colleges/search/course/${courseName}/${board}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/colleges/search/course/${courseName}/${board}`);
         const data = await response.json();
         
         if (data && Array.isArray(data)) {

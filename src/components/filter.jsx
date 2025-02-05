@@ -41,6 +41,24 @@ const Filter = ({ filters, onFilterChange, availableCities }) => {
         }
       }
     }
+
+    // Scroll on mobile
+    if (window.innerWidth < 769) {
+      setTimeout(() => {
+        window.scrollTo({ top: 200, behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
+  const handleLocationChange = (e) => {
+    onFilterChange('location', e.target.value);
+    
+    // Scroll on mobile
+    if (window.innerWidth < 769) {
+      setTimeout(() => {
+        window.scrollTo({ top: 1000, behavior: 'smooth' });
+      }, 100);
+    }
   };
 
   const toggleFilters = () => {
@@ -75,7 +93,7 @@ const Filter = ({ filters, onFilterChange, availableCities }) => {
             <select
               name="location"
               value={filters.location}
-              onChange={(e) => onFilterChange('location', e.target.value)}
+              onChange={handleLocationChange}
               onFocus={() => setIsOpen(true)}
               onBlur={() => setIsOpen(false)}
               
